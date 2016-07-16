@@ -1,0 +1,89 @@
+.tabs .tab-item .icon.home-on {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-home-on.png');
+  background-size: contain;
+}
+
+.tabs .tab-item .icon.home-off {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-home-off.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.myexercise-on {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-myexercise-on.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.myexercise-off {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-myexercise-off.png');
+  background-size:contain;
+}
+
+
+
+
+
+
+.tabs .tab-item .icon.myprogram-on {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-myprogram-on.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.myprogram-off {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-myprogram-off.png');
+  background-size:contain;
+}
+
+
+
+
+
+
+.tabs .tab-item .icon.profile-on {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-profile-on.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.profile-off {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-profile-off.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.etc-on {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-etc-on.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.etc-off {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100%;
+  background-image: url('../../../img/icons/icon-etc-off.png');
+  background-size:contain;
+}
