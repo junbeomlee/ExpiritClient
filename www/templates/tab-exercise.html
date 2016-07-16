@@ -7,18 +7,26 @@
 
     </div>
   </ion-nav-buttons>
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+  <ion-content style="background-color:#EBEBED">
+    <section class="">
+      <img src="/img/deadLift.png"style="width: 100%;height: auto;" alt="" />
+      <div class="col text-center" style="height:150px;display: flex;justify-content: center; /* align horizontal */align-items: center;">
+        <h3>"데드리프트"를 배운적이 있나요?</h3>
+      </div>
+      <hr class="style1">
+      <div class="">
+        <div class="row">
+          <div class="col text-center">
+            <button class="button button-expirit-color button-execercise">네 배웠습니다.</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <button class="button button-expirit-color button-execercise">아니요 처음입니다.</button>
+          </div>
+        </div>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+      </div>
+    </section>
   </ion-content>
 </ion-view>

@@ -2,3 +2,8 @@
   background-color:#37BBA4;
   color:#ffffff;
 }
+hr.style1{
+	border-top: 0.01px solid #cccccc;
+  margin-left: 20px;
+  margin-right: 20px;
+}
