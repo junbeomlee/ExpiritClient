@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('Expirit', ['ionic', 'expirit.controllers', 'expirit.services','restangular'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,7 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 .constant('CONFIG', {'APP_NAME': 'Expirit'})
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,RestangularProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -44,7 +44,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-home': {
         templateUrl: 'templates/tab-home.html',
-        controller: 'HomeCtrl'
+        controller: 'homeController'
       }
     }
   })
@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-exercise': {
         templateUrl: 'templates/tab-exercise.html',
-        controller: 'ExerciseCtrl'
+        controller: 'exercieController'
       }
     }
   })
@@ -62,7 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-profile': {
         templateUrl: 'templates/tab-profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'profileController'
       }
     }
   })
@@ -71,7 +71,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-program': {
         templateUrl: 'templates/tab-program.html',
-        controller: 'ProgramCtrl'
+        controller: 'programController'
       }
     }
   })
@@ -80,12 +80,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-etc': {
         templateUrl: 'templates/tab-etc.html',
-        controller: 'EtcCtrl'
+        controller: 'etcController'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
+
+
+  //restangular config==
+  RestangularProvider.setBaseUrl('http://localhost:8080');
 
 });
