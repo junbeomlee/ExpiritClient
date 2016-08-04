@@ -1,8 +1,26 @@
 <ion-view view-title="Account">
+
   <ion-nav-title>
-    {{appName}}
+    <div class="bar bar-header">
+      <button class="button button-icon" ng-click="showEditButton()">Edit</button>
+      <div class="h1 title">내 운동 프로그램</div>
+    </div>
   </ion-nav-title>
   <ion-content>
-    {{users}}
+    <div class="button-bar">
+      <a data="MON" ng-click="getListByDay($event)" class="button">월</a>
+      <a data="TUE" ng-click="getListByDay($event)" class="button">화</a>
+      <a data="WED" ng-click="getListByDay($event)" class="button">수</a>
+      <a data="THU" ng-click="getListByDay($event)" class="button">목</a>
+      <a data="FRI" ng-click="getListByDay($event)" class="button">금</a>
+      <a data="SAT" ng-click="getListByDay($event)" class="button">토</a>
+      <a data="SUN" ng-click="getListByDay($event)" class="button">일</a>
+    </div>
+    <section>
+      <div class="list">
+        <ion-tree-list items="programs" collapsed="true"></ion-tree-list>
+      </div>
+    </section>
+    <button fab>FAB</button>
   </ion-content>
 </ion-view>

@@ -5,7 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('Expirit', ['ionic', 'expirit.controllers', 'expirit.services','restangular'])
+angular.module('Expirit',
+['ionic',
+ 'expirit.controllers',
+ 'expirit.services',
+ 'expirit.factories',
+ 'restangular',
+ 'ion-tree-list',
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,7 +28,10 @@ angular.module('Expirit', ['ionic', 'expirit.controllers', 'expirit.services','r
     }
   });
 })
-.constant('CONFIG', {'APP_NAME': 'Expirit'})
+.constant('CONFIG',
+{'APP_NAME': 'Expirit',
+ 'APP_PROGRAM' : '내 운동 프로그램',
+})
 .config(function($stateProvider, $urlRouterProvider,RestangularProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -91,5 +101,5 @@ angular.module('Expirit', ['ionic', 'expirit.controllers', 'expirit.services','r
 
   //restangular config==
   RestangularProvider.setBaseUrl('http://localhost:8080');
-
+  RestangularProvider.setFullResponse(true);
 });

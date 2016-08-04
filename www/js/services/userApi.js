@@ -1,5 +1,5 @@
 angular.module('expirit.services')
-.factory('userApi',function (Restangular) {
+.factory('UserApi',function (Restangular) {
     var users=Restangular.all('users');
     return {
       getList : function(){
