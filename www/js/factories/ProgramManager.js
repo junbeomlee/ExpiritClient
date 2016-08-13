@@ -13,6 +13,14 @@ function ProgramManager(){
     },
     add: function(program){
       this._programList.push(program);
+    },
+    delete: function(exNo){
+      for(var i=0;i<this._programList.length;i++){
+        if(this._programList[i].getExercise().getNo()==exNo){
+          this._programList.splice(i,1);
+          break;
+        }
+      }
     }
   }
 

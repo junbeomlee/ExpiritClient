@@ -6,6 +6,12 @@
       <div class="h1 title">내 운동 프로그램</div>
     </div>
   </ion-nav-title>
+
+  <ion-floating-menu ng-hide="myValue" has-footer="true" button-color="#2AC9AA" icon="ion-plus" iconColor="#fff">
+    <ion-floating-item icon="ion-ios-plus-empty" click="addButtonClick()"></ion-floating-item>
+    <ion-floating-item icon="ion-ios-trash-outline" click="deleteButtonClick()"></ion-floating-item>
+    <ion-floating-item icon="ion-loop" click="changeButtonClick()"></ion-floating-item>
+  </ion-floating-menu>
   <ion-content>
     <div class="button-bar">
       <a data="MON" ng-click="getListByDay($event)" class="button">월</a>
@@ -21,6 +27,6 @@
         <ion-tree-list items="programs" collapsed="true"></ion-tree-list>
       </div>
     </section>
-    <button fab>FAB</button>
+
   </ion-content>
 </ion-view>

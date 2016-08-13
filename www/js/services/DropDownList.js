@@ -31,12 +31,8 @@ function DropDownList(){
     this.name=name;
     this.no=no;
   }
-
-  //console.log(dropDownData.data);
-  this.getData = function(){
-    return dropDownData.data;
-  }
-  this.setData = function(programList){
+  
+  this.fromProgramList = function(programList){
 
     dropDownData= new DropDownData();
 
@@ -60,6 +56,8 @@ function DropDownList(){
         default:
       }
     }
+
+    return dropDownData.data;
   }
 
   this.getInitData = function(){

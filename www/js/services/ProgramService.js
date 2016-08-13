@@ -9,7 +9,7 @@ function ProgramService(UserApi,User,Program,Exercise,ProgramManager,HistoryApi,
   //console.log(HistoryApi.getListByExerciseNo(120001));
 
   /*
-   *
+   * 유저의 프로그램 리스트 network call
    */
   UserApi.getProgramList().then(function(response){
     console.log(response.status);
@@ -20,31 +20,32 @@ function ProgramService(UserApi,User,Program,Exercise,ProgramManager,HistoryApi,
         var exercise = Exercise.fromJson(exerciseJson);
         var program = new Program(exercise,program.day);
         ProgramManager.add(program);
-
-
       });
+
+      // 이벤트 발생 "명칭",데이터
       $rootScope.$broadcast('loadProgramEvent',ProgramManager);
     }
   });
-  //var jsonProgram ='{"user":"leebduk@gmail.com","exercise":{"exSeq":1,"exNo":1111,"exNm":"벤치","restSecond":1,"method":"1","exImage":"1","exUrl":"1","exImgSysName":"1","commonEntity":null,"exImgPath":"asd","exDefaultSet":1,"rest":1},"day":"MON"}';
-  // var exercise = Exercise.fromJson(JsonExercise);
-  // console.log(exercise);
-  //var asd = angular.extend(new Exercise(), angular.fromJson(JsonExercise));
-  //var programFromJson = angular.extend(new Program(), angular.fromJson(jsonProgram));
-  // console.log(programFromJson);
-  // var exercise = new Exercise(111,"bench");
-  // var exercise2 = new Exercise(222,"dead");
-  // var program = new Program(exercise,"MON");
-  // var program2 = new Program(exercise2,"TUE");
-  // ProgramManager.add(program);
-  // ProgramManager.add(program2);
-  // UserApi.getProgramList().then(function(programList){
-  //   console.log(programList[0][0]);
-  // });
+
+  /*
+   * day에 해당하는 프로그램 리스트 불러오기
+   */
   this.getProgramListByDay = function (day){
     return ProgramManager.getListByDay(day);
   };
-  // this.getLoadProgram = function(){
-  //   return ProgramManager.;
-  // };
+
+  this.deleteProgram = function (exNo){
+     UserApi.deleteProgram(exNo).then(function(response){
+       console.log(response.status);
+       if(response.status==200){
+         ProgramManager.delete(exNo);
+
+         // 이벤트 발생
+         $rootScope.$broadcast('loadProgramEvent',ProgramManager);
+       }
+     })
+
+     //});
+  };
+
 }

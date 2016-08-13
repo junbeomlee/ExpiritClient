@@ -12,8 +12,8 @@ angular.module('Expirit',
  'expirit.factories',
  'restangular',
  'ion-tree-list',
+ 'ion-floating-menu'
 ])
-
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -29,7 +29,8 @@ angular.module('Expirit',
   });
 })
 .constant('CONFIG',
-{'APP_NAME': 'Expirit',
+{
+ 'APP_NAME': 'Expirit',
  'APP_PROGRAM' : '내 운동 프로그램',
 })
 .config(function($stateProvider, $urlRouterProvider,RestangularProvider) {
@@ -39,7 +40,6 @@ angular.module('Expirit',
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
   // setup an abstract state for the tabs directive
   .state('tab', {
     url: '/tab',
@@ -93,11 +93,13 @@ angular.module('Expirit',
         controller: 'etcController'
       }
     }
+  }).state('header',{
+    url: '/asd',
+    templateUrl:"templates/header.html",
   });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
-
 
   //restangular config==
   RestangularProvider.setBaseUrl('http://localhost:8080');

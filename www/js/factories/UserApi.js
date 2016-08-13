@@ -9,6 +9,12 @@ function (Restangular) {
       },
       getProgramList: function(){
         return user.getList('programs');
+      },
+      deleteProgram: function(exNo){
+        return user.one('programs',exNo).remove();
+      },
+      addProgram: function(exNo){
+        return user.one('programs',exNo).post();
       }
     }
 });

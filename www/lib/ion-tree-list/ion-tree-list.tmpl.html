@@ -1,23 +1,29 @@
 <link type="text/css" rel="stylesheet" ng-href="{{baseUrl}}/ion-tree-list.css"/>
 
 <script type="text/ng-template" id="item_default_renderer">
+  <div  class="">
     <span class="symbol">
         <i class="icon" ng-if="item.tree.length > 0" ng-class="item.tree.collapsed ? 'ion-arrow-right-b' : 'ion-arrow-down-b'"></i>
     </span>
-    {{item.name}}
+    <span  >{{item.name}}</span>
     <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+  </div>
+
 </script>
 
 <script type="text/ng-template" id="items_renderer">
-    <ion-item class="item depth-{{item.depth}}"
+    <ion-item ng-class="{'click-active' : item.clicked == 'true'}"
+              class="item depth-{{item.depth}}"
               ng-click="toggleCollapse(item); emitEvent(item)"
-              ng-include="templateUrl">
+              ng-include="templateUrl"
+              >
     </ion-item>
     <ion-list ng-model="item.tree"
               ng-repeat="item in item.tree"
               ng-hide="item.collapsed"
               ng-include="'items_renderer'"
-              show-reorder="showReorder">
+              show-reorder="showReorder"
+              >
     </ion-list>
 </script>
 

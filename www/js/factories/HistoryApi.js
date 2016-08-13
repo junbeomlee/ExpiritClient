@@ -5,6 +5,9 @@ function (Restangular) {
 
     return {
       getListByExerciseNo : function(exNo){
+        /*
+         *  /histories/search?userEmail='frontalnh@naver.com'&exNo:"120001";
+         */
         return histories.customGET("search",{'userEmail':'frontalnh@naver.com','exNo':exNo});
       },
     }

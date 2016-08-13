@@ -7,3 +7,8 @@ hr.style1{
   margin-left: 20px;
   margin-right: 20px;
 }
+
+.my-class {
+  color: red;
+  font-size:3em;
+}
