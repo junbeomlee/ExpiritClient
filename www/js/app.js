@@ -12,7 +12,8 @@ angular.module('Expirit',
  'expirit.factories',
  'restangular',
  'ion-tree-list',
- 'ion-floating-menu'
+ 'ion-floating-menu',
+ 'ngCordovaOauth'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
