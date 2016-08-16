@@ -127,4 +127,18 @@ angular.module('Expirit',
   //$httpProvider.interceptors.push('AuthInterceptor');
   console.log(ErrorInterceptorProvider.$get().response);
   RestangularProvider.setErrorInterceptor(ErrorInterceptorProvider.$get().response);
+  
+  RestangularProvider.setRequestInterceptor(function(elem, operation) {
+    if (operation === "remove") {
+      return undefined;
+    }
+    return elem;
+  });
+  /*$httpProvider.defaults.headers.common = {};
+  $httpProvider.defaults.headers.post = {};
+  $httpProvider.defaults.headers.delete = {};
+  $httpProvider.defaults.headers.put = {};
+  $httpProvider.defaults.headers.patch = {};
+  $httpProvider.defaults.headers.get = {};
+  $httpProvider.defaults.headers.options = {};*/
 });

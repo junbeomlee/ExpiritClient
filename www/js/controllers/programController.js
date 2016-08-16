@@ -30,6 +30,11 @@ angular.module('expirit.controllers')
     });
   }
 
+  $scope.test = function(){
+    UserApi.getList().then(function(res){
+      console.log(res);
+    });
+  }
   $scope.apiGetProgram = function(){
     ProgramService.apiGetProgramList();
   }

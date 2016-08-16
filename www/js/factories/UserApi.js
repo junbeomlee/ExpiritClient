@@ -11,10 +11,10 @@ function (Restangular,$cookieStore) {
         return user.getList('programs');
       },
       deleteProgram: function(exNo){
-        return user.one('programs',exNo).remove();
+        return user.one('programs',exNo).get();
       },
       addProgram: function(exNo){
-        return user.one('programs',exNo).post();
+        return user.one('programs',exNo).remove();
       },
       login: function(){
         return Restangular.one("").customGET("login",{'email':'frontalnh@naver.com','password':61351});
