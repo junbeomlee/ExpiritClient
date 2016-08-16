@@ -1,12 +1,46 @@
 angular.module('expirit.controllers')
-.controller('programController', function($scope,CONFIG,DropDownList,ProgramService,$ionicActionSheet) {
+.controller('programController', function($scope,CONFIG,DropDownList,ProgramService,$ionicActionSheet,UserApi,$cookies,$cookieStore,$timeout) {
 
+/*
+테스트용
+*/
+  $scope.login = function(){
+    UserApi.login().then(function(res){
+      $timeout(function(){
+        console.log($cookies.session)
+      });
+      console.log(res.data[0].email);
+      //console.log($cookies.get(JSESSIONID));
+      //console.log($cookieStore);
+      console.log($cookieStore.get("Set-Cookie"));
+      //console.log($cookieStore);
+      //console.log($cookies);
+      //console.log($cookieStore.get('JESSIONID'));
+      //console.log($cookies.get('JSESSIONID'));
+      console.log(res);
+      console.log(res.headers("asd"));
+      //console.log($cookies.JSESSIONID);
+      //console.log();
+    });
+  }
+
+  $scope.logout = function(){
+    UserApi.logout().then(function(res){
+      console.log("logout");
+    });
+  }
+
+  $scope.test = function(){
+    UserApi.getList().then(function(res){
+      console.log(res);
+    });
+  }
   $scope.appName=CONFIG.APP_PROGRAM;
   var editButtonHide=false;
 
   // 현재 눌린 운동
   var clickedExercise="";
-  // 현재 눌린 운동 리스트 -> css 적용하기위해
+  // 현재 눌린 운동 리스트 -> css 적용하기위해getListByExerciseNo
   var clickedExerciseItem="";
   /*
   *  오늘 요일
@@ -30,12 +64,12 @@ angular.module('expirit.controllers')
   *  Program Page에서 요일을 클릭했을 경우 이벤트
   *  해당요일에 해당하는 운동리스트를 표시
   */
-  $scope.getListByDay = function(e){
-
-    var day = e.target.attributes.data.value;
-    var programList=ProgramService.getProgramListByDay(day);
-    $scope.programs=DropDownList.fromProgramList(programList);
-  }
+  // $scope.getListByDay = function(e){
+  //
+  //   var day = e.target.attributes.data.value;
+  //   var programList=ProgramService.getProgramListByDay(day);
+  //   $scope.programs=DropDownList.fromProgramList(programList);
+  // }
 
   /*
   *
@@ -64,8 +98,8 @@ angular.module('expirit.controllers')
   * 해당 데이터가 변경되었음을 의미
   */
   $scope.$on('loadProgramEvent',function(event,programManager){
-    var programList=programManager.getListByDay(getTodayLabel());
-    $scope.programs=DropDownList.fromProgramList(programList);
+    //var programList=programManager.getListByDay(getTodayLabel());
+    //$scope.programs=DropDownList.fromProgramList(programList);
   });
 
   /*

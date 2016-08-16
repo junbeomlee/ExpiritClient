@@ -9,6 +9,7 @@
     "lodash": "^4.14.1",
     "ng-lodash": "^0.5.0",
     "ion-tree-list": "^0.0.8",
-    "ng-cordova-oauth": "^0.2.10"
+    "ng-cordova-oauth": "^0.2.10",
+    "angular-dialog-service": "^5.3.0"
   }
 }
