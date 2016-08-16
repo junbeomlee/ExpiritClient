@@ -11,21 +11,25 @@ function ProgramService(UserApi,User,Program,Exercise,ProgramManager,HistoryApi,
   /*
    * 유저의 프로그램 리스트 network call
    */
-  // UserApi.getProgramList().then(function(response){
-  //   console.log(response.status);
-  //   if(response.status == 200){
-  //     var resData = response.data.plain()[0];
-  //     angular.forEach(resData, function(program, index){
-  //       var exerciseJson = program.exercise;
-  //       var exercise = Exercise.fromJson(exerciseJson);
-  //       var program = new Program(exercise,program.day);
-  //       ProgramManager.add(program);
-  //     });
-  //
-  //     // 이벤트 발생 "명칭",데이터
-  //     $rootScope.$broadcast('loadProgramEvent',ProgramManager);
-  //   }
-  // });
+
+  this.apiGetProgramList = function(){
+    UserApi.getProgramList().then(function(response){
+      console.log(response.status);
+      if(response.status == 200){
+        var resData = response.data.plain()[0];
+        angular.forEach(resData, function(program, index){
+          var exerciseJson = program.exercise;
+          var exercise = Exercise.fromJson(exerciseJson);
+          var program = new Program(exercise,program.day);
+          ProgramManager.add(program);
+        });
+
+        // 이벤트 발생 "명칭",데이터
+        $rootScope.$broadcast('loadProgramEvent',ProgramManager);
+      }
+    });
+  }
+
 
   /*
    * day에 해당하는 프로그램 리스트 불러오기

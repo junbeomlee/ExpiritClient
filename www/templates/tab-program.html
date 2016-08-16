@@ -2,8 +2,11 @@
 
   <ion-nav-title>
     <div class="bar bar-header">
-      <button class="button button-icon" ng-click="showEditButton()">Edit</button>
+      <button class="button" name="button" ng-click="login()">login</button>
+      <!--<button class="button button-icon" ng-click="showEditButton()">Edit</button>-->
       <div class="h1 title">내 운동 프로그램</div>
+      <button class="button" name="button" ng-click="apiGetProgram()">loadData</button>
+      <button class="button" name="button" ng-click="logout()">logout</button>
     </div>
   </ion-nav-title>
 
@@ -27,8 +30,6 @@
         <ion-tree-list items="programs" collapsed="true"></ion-tree-list>
       </div>
     </section>
-    <button type="button" name="button" ng-click="login()">login</button>
-    <button type="button" name="button" ng-click="test()">test</button>
-    <button type="button" name="button" ng-click="logout()">logout</button>
+
   </ion-content>
 </ion-view>

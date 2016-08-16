@@ -4,13 +4,14 @@ function ProgramManager(){
   var programManager = {
     programList:[],
     getListByExerciseNo: function(exNo){
-      return {};//this.programList.find((item) => {return item.getExercise().getNo()==exNo});
+      return this.programList.find(function(program){
+        return program.getExercise().getNo()==exNo;
+      });//(item) => {return item.getExercise().getNo()==exNo});
     },
     getListByDay: function(day){
-      return {}
-      /*this.programList.filter((item) => {
-        return item.getDay()==day;
-      });*/
+      return this.programList.filter(function(program){
+        return program.getDay()==day;
+      });
     },
     add: function(program){
       this.programList.push(program);

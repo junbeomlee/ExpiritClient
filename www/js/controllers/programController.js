@@ -30,10 +30,8 @@ angular.module('expirit.controllers')
     });
   }
 
-  $scope.test = function(){
-    UserApi.getList().then(function(res){
-      console.log(res);
-    });
+  $scope.apiGetProgram = function(){
+    ProgramService.apiGetProgramList();
   }
   $scope.appName=CONFIG.APP_PROGRAM;
   var editButtonHide=false;
@@ -64,12 +62,12 @@ angular.module('expirit.controllers')
   *  Program Page에서 요일을 클릭했을 경우 이벤트
   *  해당요일에 해당하는 운동리스트를 표시
   */
-  // $scope.getListByDay = function(e){
-  //
-  //   var day = e.target.attributes.data.value;
-  //   var programList=ProgramService.getProgramListByDay(day);
-  //   $scope.programs=DropDownList.fromProgramList(programList);
-  // }
+  $scope.getListByDay = function(e){
+
+    var day = e.target.attributes.data.value;
+    var programList=ProgramService.getProgramListByDay(day);
+    $scope.programs=DropDownList.fromProgramList(programList);
+  }
 
   /*
   *
@@ -98,8 +96,8 @@ angular.module('expirit.controllers')
   * 해당 데이터가 변경되었음을 의미
   */
   $scope.$on('loadProgramEvent',function(event,programManager){
-    //var programList=programManager.getListByDay(getTodayLabel());
-    //$scope.programs=DropDownList.fromProgramList(programList);
+    var programList=programManager.getListByDay(getTodayLabel());
+    $scope.programs=DropDownList.fromProgramList(programList);
   });
 
   /*

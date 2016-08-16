@@ -36,12 +36,8 @@ angular.module('Expirit',
     }
   });
 })
-.constant('CONFIG',
-{
-  'APP_NAME': 'Expirit',
-  'APP_PROGRAM' : '내 운동 프로그램',
-})
-.config(function($cookiesProvider,$stateProvider, $urlRouterProvider,RestangularProvider,$httpProvider) {
+.constant('CONFIG',{'APP_NAME': 'Expirit','APP_PROGRAM' : '내 운동 프로그램',})
+.config(function($cookiesProvider,$stateProvider, $urlRouterProvider,RestangularProvider,$httpProvider,ErrorInterceptorProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -129,23 +125,6 @@ angular.module('Expirit',
   //RestangularProvider.setDefaultHeaders({token: "x-restangular"});
   //$httpProvider.defaults.withCredentials = true
   //$httpProvider.interceptors.push('AuthInterceptor');
-
-  RestangularProvider.setErrorInterceptor(
-    function ( response ) {
-      if ( response.status == 401 ) {
-        dialogs.error("Unauthorized - Error 401", "You must be authenticated in order to access this content.")
-        .result.then( function () {
-          console.log("need login");
-        });
-      }
-      else {
-        // Some other unknown Error.
-        console.log( response );
-        dialogs.error(response.statusText + " - Error " + response.status,
-        "An unknown error has occurred.<br>Details: " + response.data);
-      }
-      // Stop the promise chain.
-      return false;
-    }
-  );
+  console.log(ErrorInterceptorProvider.$get().response);
+  RestangularProvider.setErrorInterceptor(ErrorInterceptorProvider.$get().response);
 });
