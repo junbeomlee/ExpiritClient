@@ -15,6 +15,8 @@ angular.module('Expirit',
 'ion-floating-menu',
 'ngCordovaOauth',
 'ngCookies',
+ 'angular-svg-round-progressbar' ,
+ 'jh.angular-number-picker'
 ])
 .run(function($rootScope,$ionicPlatform,Application,DBConnector,$cookies) {
   $rootScope.$cookies = $cookies;
@@ -35,6 +37,68 @@ angular.module('Expirit',
       StatusBar.styleDefault();
     }
   });
+})
+.controller('timerCtrl',function($scope, $timeout){
+	$scope.myTimerFixed=30;
+	$scope.myTimer=30;
+	$scope.myNumber = 10;
+	$scope.radius = 300;
+
+	var myTimerVariable;
+	$scope.numberPickerObject = {
+    inputValue: 0, //Optional
+    minValue: -9007199254740991,
+    maxValue: 9007199254740991,
+    precision: 3,  //Optional
+    decimalStep: 0.25,  //Optional
+    format: "DECIMAL",  //Optional - "WHOLE" or "DECIMAL"
+    unit: "",  //Optional - "m", "kg", "℃" or whatever you want
+    titleLabel: 'Number Picker',  //Optional
+    setLabel: 'Set',  //Optional
+    closeLabel: 'Close',  //Optional
+    setButtonType: 'button-positive',  //Optional
+    closeButtonType: 'button-stable',  //Optional
+    callback: function (val) {    //Mandatory
+    timePickerCallback(val);
+  }
+};
+
+	$scope.myCustomTimer=function(){
+		$scope.myTimer--;
+		if($scope.myTimer == 0){
+			$timeout.cancel(myTimerVariable);
+			$scope.complete(false);
+			return false;
+		}
+		myTimerVariable = $timeout($scope.myCustomTimer, 1000);
+	}
+	$scope.start=function(){
+		myTimerVariable = $timeout($scope.myCustomTimer, 1000);
+	}
+	$scope.stop=function(){
+		$timeout.cancel(myTimerVariable);
+		complete(true);
+	}
+    $scope.getStyle = function(){
+                var transform =  'translateY(-50%) translateX(-50%)';
+
+                return {
+                    'top':  '50%',
+                    'bottom': 'auto',
+                    'left': '50%',
+                    'transform': transform,
+                    '-moz-transform': transform,
+                    '-webkit-transform': transform,
+                    'font-size': $scope.radius/3.5 + 'px'
+                };
+            };
+	var complete = function (forceFulAbort){
+		if(forceFulAbort){
+			alert('You killed the damn timer');
+		}else{
+			alert('Timer completed');
+		}
+	}
 })
 .constant('CONFIG',{'APP_NAME': 'Expirit','APP_PROGRAM' : '내 운동 프로그램',})
 .config(function($cookiesProvider,$stateProvider, $urlRouterProvider,RestangularProvider,$httpProvider,ErrorInterceptorProvider) {
@@ -88,6 +152,26 @@ angular.module('Expirit',
         controller: 'programController'
       }
     }
+  })
+  .state('main', {
+    url: '/main',
+        templateUrl: 'templates/main.html'
+     
+  })
+  .state('main1', {
+    url: '/main1',
+        templateUrl: 'templates/main1.html'
+     
+  })
+    .state('main2', {
+    url: '/main2',
+        templateUrl: 'templates/main2.html'
+     
+  })
+    .state('main3', {
+    url: '/main3',
+        templateUrl: 'templates/main3.html'
+     
   })
   .state('tab.etc', {
     url: '/etc',

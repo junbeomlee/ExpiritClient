@@ -2,3 +2,19 @@
 :root{
   var-imgPath : "/img/";
 }
+
+#bigCircle{
+	width: 60%;
+	margin: 0 auto;
+}
+
+.progress {
+    position: absolute;
+    color: #bbb;
+    font-weight: 100;
+    line-height: 1;
+}
+
+.progress-wrapper{
+	position: relative;
+}
