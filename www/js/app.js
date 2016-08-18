@@ -16,7 +16,8 @@ angular.module('Expirit',
 'ngCordovaOauth',
 'ngCookies',
  'angular-svg-round-progressbar' ,
- 'jh.angular-number-picker'
+ 'jh.angular-number-picker',
+'chart.js'
 ])
 .run(function($rootScope,$ionicPlatform,Application,DBConnector,$cookies) {
   $rootScope.$cookies = $cookies;
@@ -46,22 +47,22 @@ angular.module('Expirit',
 
 	var myTimerVariable;
 	$scope.numberPickerObject = {
-    inputValue: 0, //Optional
-    minValue: -9007199254740991,
-    maxValue: 9007199254740991,
-    precision: 3,  //Optional
-    decimalStep: 0.25,  //Optional
-    format: "DECIMAL",  //Optional - "WHOLE" or "DECIMAL"
-    unit: "",  //Optional - "m", "kg", "℃" or whatever you want
-    titleLabel: 'Number Picker',  //Optional
-    setLabel: 'Set',  //Optional
-    closeLabel: 'Close',  //Optional
-    setButtonType: 'button-positive',  //Optional
-    closeButtonType: 'button-stable',  //Optional
-    callback: function (val) {    //Mandatory
-    timePickerCallback(val);
-  }
-};
+		inputValue: 0, //Optional
+		minValue: -9007199254740991,
+		maxValue: 9007199254740991,
+		precision: 3,  //Optional
+		decimalStep: 0.25,  //Optional
+		format: "DECIMAL",  //Optional - "WHOLE" or "DECIMAL"
+		unit: "",  //Optional - "m", "kg", "℃" or whatever you want
+		titleLabel: 'Number Picker',  //Optional
+		setLabel: 'Set',  //Optional
+		closeLabel: 'Close',  //Optional
+		setButtonType: 'button-positive',  //Optional
+		closeButtonType: 'button-stable',  //Optional
+		callback: function (val) {    //Mandatory
+			timePickerCallback(val);
+		}
+	};
 
 	$scope.myCustomTimer=function(){
 		$scope.myTimer--;
@@ -99,6 +100,15 @@ angular.module('Expirit',
 			alert('Timer completed');
 		}
 	}
+})
+.controller("ExampleController", function($scope) {
+	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
+
 })
 .constant('CONFIG',{'APP_NAME': 'Expirit','APP_PROGRAM' : '내 운동 프로그램',})
 .config(function($cookiesProvider,$stateProvider, $urlRouterProvider,RestangularProvider,$httpProvider,ErrorInterceptorProvider) {
@@ -171,6 +181,11 @@ angular.module('Expirit',
     .state('main3', {
     url: '/main3',
         templateUrl: 'templates/main3.html'
+     
+  })
+      .state('main4', {
+    url: '/main4',
+        templateUrl: 'templates/main4.html'
      
   })
   .state('tab.etc', {
