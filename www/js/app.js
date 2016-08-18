@@ -5,6 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
+var db = null;
+
 angular.module('Expirit',
 ['ionic',
 'expirit.controllers',
@@ -15,13 +18,16 @@ angular.module('Expirit',
 'ion-floating-menu',
 'ngCordovaOauth',
 'ngCookies',
+'ngCordova'
 ])
-.run(function($rootScope,$ionicPlatform,Application,DBConnector,$cookies) {
+.run(function($rootScope,$ionicPlatform,Application,$cookies,$cordovaSQLite) {
   $rootScope.$cookies = $cookies;
   if (Application.isInitialRun()) {
     Application.setInitialRun(false);
     console.log("only once!!!");
   }
+
+
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -34,6 +40,21 @@ angular.module('Expirit',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    if(ionic.Platform.isAndroid()){
+      //android db connection
+      $cordovaSQLite.openDB({ name: 'expirit.db' });
+    }else{
+      // web db connection
+      //console.log(DBConnector+"WEB");
+      db = window.openDatabase("expirit.db", "1.0", "My app", -1);
+
+    };
+    // console.log($cordovaSQLite);
+    // console.log(window);
+    // console.log(db);
+    //$cordovaSQLite.execute(db,"DROP TABLE exercise");
+    $cordovaSQLite.execute(db,"CREATE TABLE exercise (EX_NO varchar primary key NOT NULL, EX_NM varchar, REST_SECOND integer,METHOD text,EX_IMAGE_NM varchar, EX_URL varchar, EX_IMG_SYS_NM varchar,EX_EEFAULT_SET varchar,EX_ETC varchar, EX_DESC text, EX_LEVEL integer, EX_DEPTH1 varchar,EX_DEPTH2 varchar, EX_DEPTH3 varchar)");
   });
 })
 .constant('CONFIG',{'APP_NAME': 'Expirit','APP_PROGRAM' : '내 운동 프로그램',})
@@ -114,31 +135,16 @@ angular.module('Expirit',
   }else{
     RestangularProvider.setBaseUrl('http://localhost:8080');
   }
-  //console.log($cookieStore);
-  //RestangularProvider.setDefaultHeaders({ Authorization: function() { return "Token " + $cookieStore.get('token'); } });
+
   RestangularProvider.setFullResponse(true);
 
-
   $httpProvider.defaults.withCredentials = true;
-  //RestangularProvider.setDefaultHttpFields({withCredentials: true});
-  //RestangularProvider.setDefaultHeaders({'Access-Control-Allow-Credentials': true});
-  //RestangularProvider.setDefaultHeaders({token: "x-restangular"});
-  //$httpProvider.defaults.withCredentials = true
-  //$httpProvider.interceptors.push('AuthInterceptor');
-  console.log(ErrorInterceptorProvider.$get().response);
   RestangularProvider.setErrorInterceptor(ErrorInterceptorProvider.$get().response);
-  
+
   RestangularProvider.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
       return undefined;
     }
     return elem;
   });
-  /*$httpProvider.defaults.headers.common = {};
-  $httpProvider.defaults.headers.post = {};
-  $httpProvider.defaults.headers.delete = {};
-  $httpProvider.defaults.headers.put = {};
-  $httpProvider.defaults.headers.patch = {};
-  $httpProvider.defaults.headers.get = {};
-  $httpProvider.defaults.headers.options = {};*/
 });
