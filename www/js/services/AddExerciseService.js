@@ -3,10 +3,9 @@ angular.module('expirit.services').service('AddExerciseService',AddExerciseServi
 AddExerciseService.$inject=['ExerciseDao','$rootScope','ProgramManager','Program','Exercise','$rootScope','UserApi'];
 
 function AddExerciseService(ExerciseDao,$rootScope,ProgramManager,Program,Exercise,$rootScope,UserApi){
+  
   this.dbLoadExerciseList = function(){
     ExerciseDao.getAll().then(function(exerciseList){
-
-
       $rootScope.$broadcast('dbLoadExerciseListEvent',exerciseList);
     });
   }

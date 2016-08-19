@@ -1,0 +1,40 @@
+<ion-view>
+  <ion-nav-title>
+    <b>데드리프트</b>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <div ng-include="header">
+
+    </div>
+  </ion-nav-buttons>
+  <ion-content style="background-color:#EBEBED" ng-controller="pickerCtrl">
+    <div class="button-bar">
+	<a href="#/main1" class="button"><</a>
+      <a class="button"><font color="red">1</font></a>
+      <a data="TUE" ng-click="getListByDay($event)" class="button">2</a>
+      <a data="WED" ng-click="getListByDay($event)" class="button">3</a>
+      <a data="THU" ng-click="getListByDay($event)" class="button">4</a>
+      <a data="FRI" ng-click="getListByDay($event)" class="button">5</a>
+	  <a href="#/main3" class="button">></a>
+    </div>
+    <div class="contents">
+	<section class="">
+      <img src="/img/test.gif"style="width: 100%;height: auto;" alt="" />
+    </section>
+	<section class="core-section" style="margin-bottom:10px;padding:15px">
+		<h5><b>1세트 "85kg"으로 할 수 있는만큼 최대한 실시하세요!</b></h5>
+		<jh-number-picker number="myNumber"></jh-number-picker>
+      </section>	
+     <section class="core-section" style="margin-bottom:10px;padding:15px">
+		 <div class="">
+        <div class="row">
+          <div class="col text-center">
+            <a class="button button-expirit-color button-execercise" href="#/main3">완료</a>
+          </div>
+        </div>
+      </div>
+      </section>	
+	
+    </div>
+  </ion-content>
+</ion-view>

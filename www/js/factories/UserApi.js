@@ -15,7 +15,6 @@ function (Restangular,$cookieStore) {
         return user.one('programs',exNo).remove();
       },
       addProgram: function(program){
-        //return userProgram.post(program);
         var program = {day:'MON'};
         return userProgram.post('',program);
       },

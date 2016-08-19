@@ -22,8 +22,6 @@ angular.module('expirit.controllers')
     else{
 
     }
-
-
   });
 
   $scope.$on('')
