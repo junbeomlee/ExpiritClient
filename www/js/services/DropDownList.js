@@ -31,7 +31,7 @@ function DropDownList(){
     this.name=name;
     this.no=no;
   }
-  
+
   this.fromProgramList = function(programList){
 
     dropDownData= new DropDownData();
@@ -39,18 +39,21 @@ function DropDownList(){
     for(var index in programList){
       var exercise=programList[index].getExercise();
       var exerciseItem = new ExerciseItem(exercise.getName(),exercise.getNo());
-      switch (exercise.getType()) {
-        case '스트레칭':
+      var asd =exercise.getDepth1();
+      console.log(asd);
+      console.log(ExerciseCode.stretching);
+      switch (exercise.getDepth1()) {
+        case ExerciseCode.stretching:
           //console.log(exercise);
           dropDownData.data[0].tree.push(exerciseItem);
         break;
-        case '코어운동':
+        case ExerciseCode.coreExercise:
           dropDownData.data[1].tree.push(exerciseItem);
         break;
-        case '메인운동':
+        case ExerciseCode.mainExercise:
           dropDownData.data[2].tree.push(exerciseItem);
         break;
-        case '유산소운동':
+        case ExerciseCode.aerobicExercise:
           dropDownData.data[3].tree.push(exerciseItem);
         break;
         default:
@@ -61,6 +64,7 @@ function DropDownList(){
   }
 
   this.getInitData = function(){
-    return new DropDownData().data;
+    dropDownData= new DropDownData();
+    return dropDownData.data;
   }
 }

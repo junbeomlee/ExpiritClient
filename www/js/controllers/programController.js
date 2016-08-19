@@ -101,8 +101,11 @@ angular.module('expirit.controllers')
   * 해당 데이터가 변경되었음을 의미
   */
   $scope.$on('loadProgramEvent',function(event,programManager){
+    console.log("load!!");
     var programList=programManager.getListByDay(getTodayLabel());
+    console.log(programList);
     $scope.programs=DropDownList.fromProgramList(programList);
+    //console.log(programManager);
   });
 
   /*
