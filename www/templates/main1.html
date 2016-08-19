@@ -1,24 +1,24 @@
-<ion-view>
+<ion-view ng-controller="main1Controller">
   <ion-nav-title>
-    <b>데드리프트</b>
+    <b>{{exName}}</b>
   </ion-nav-title>
   <ion-nav-buttons side="left">
     <div ng-include="header">
 
     </div>
   </ion-nav-buttons>
-  <ion-content style="background-color:#EBEBED" ng-controller="pickerCtrl">
+  <ion-content style="background-color:#EBEBED" >
     <div class="contents">
       <section class="" style="background-color:#ffffff;padding:15px;padding-top:80px;padding-bottom:80px;margin-bottom:10px">
         <h3><b>"데드리프트"가 처음이시군요!</b></h3>
-        <p>송주안님의 체중 65KG인 다른사람들은
+        <p>송주안님의 체중 {{myweight}}kg인 다른사람들은
         <br>
-        평균 85KG으로 8~12회 반복 운동을 하고 있어요!</p>
+        평균 {{weight}}kg로 8~12회 반복 운동을 하고 있어요!</p>
       </section>
  
 	 <section class="core-section" style="margin-bottom:10px;padding:15px">
 		<h5><b>몇 kg으로 운동하시겠습니까?</b></h5>
-		<jh-number-picker number="myNumber"></jh-number-picker>
+		<jh-number-picker number="weight"></jh-number-picker>
       </section>	
 	
      <section class="core-section" style="margin-bottom:10px;padding:15px">
