@@ -212,9 +212,9 @@ angular.module('Expirit',
         templateUrl: 'templates/main4.html'
      
   })
-    .state('main6', {
-    url: '/main6',
-        templateUrl: 'templates/main6.html'
+    .state('intro3-1', {
+    url: '/intro3-1',
+        templateUrl: 'templates/intro3-1.html'
      
   })
   .state('tab.etc', {
