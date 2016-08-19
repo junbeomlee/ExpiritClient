@@ -39,10 +39,13 @@ angular.module('Expirit',
     }
   });
 })
+.controller('pickerCtrl',function($scope){
+		$scope.myNumber = 10;
+})
 .controller('timerCtrl',function($scope, $timeout){
 	$scope.myTimerFixed=30;
 	$scope.myTimer=30;
-	$scope.myNumber = 10;
+
 	$scope.radius = 300;
 
 	var myTimerVariable;
@@ -186,6 +189,11 @@ angular.module('Expirit',
       .state('main4', {
     url: '/main4',
         templateUrl: 'templates/main4.html'
+     
+  })
+    .state('main6', {
+    url: '/main6',
+        templateUrl: 'templates/main6.html'
      
   })
   .state('tab.etc', {
