@@ -16,6 +16,9 @@ function ProgramManager(){
     add: function(program){
       this.programList.push(program);
     },
+    set: function(programList){
+      this.programList=programList;
+    },
     delete: function(exNo){
       for(var i=0;i<this.programList.length;i++){
         if(this.programList[i].getExercise().getNo()==exNo){
@@ -23,7 +26,7 @@ function ProgramManager(){
           break;
         }
       }
-    }
+    },
   }
 
   return programManager;

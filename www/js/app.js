@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-var db = null;
+
 
 angular.module('Expirit',
 ['ionic',
@@ -18,14 +18,12 @@ angular.module('Expirit',
 'ion-floating-menu',
 'ngCordovaOauth',
 'ngCookies',
-'ngCordova'
+'ngCordova',
+'ngRoute'
 ])
-.run(function($rootScope,$ionicPlatform,Application,$cookies,$cordovaSQLite) {
+.run(function($rootScope,$ionicPlatform,Application,$cookies,$cordovaSQLite,DBConnector) {
   $rootScope.$cookies = $cookies;
-  if (Application.isInitialRun()) {
-    Application.setInitialRun(false);
-    console.log("only once!!!");
-  }
+
 
 
 
@@ -41,20 +39,26 @@ angular.module('Expirit',
       StatusBar.styleDefault();
     }
 
-    if(ionic.Platform.isAndroid()){
+    /*if(ionic.Platform.isAndroid()){
       //android db connection
       $cordovaSQLite.openDB({ name: 'expirit.db' });
     }else{
       // web db connection
       //console.log(DBConnector+"WEB");
       db = window.openDatabase("expirit.db", "1.0", "My app", -1);
-
-    };
+    };*/
+    DBConnector.connectDatabase(ionic.Platform.isAndroid());
+    DBConnector.createExerciseTable();
+    if (Application.isInitialRun()) {
+      Application.setInitialRun(false);
+      console.log("only once!!!");
+    }
+    //$cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS exercise (EX_NO varchar primary key NOT NULL, EX_NM varchar, REST_SECOND integer,METHOD text,EX_IMAGE_NM varchar, EX_URL varchar, EX_IMG_SYS_NM varchar,EX_DEFAULT_SET varchar,EX_IMG_PATH varchar,EX_ETC varchar, EX_DESC text, EX_LEVEL integer, EX_DEPTH1 varchar,EX_DEPTH2 varchar, EX_DEPTH3 varchar)");
     // console.log($cordovaSQLite);
     // console.log(window);
     // console.log(db);
     //$cordovaSQLite.execute(db,"DROP TABLE exercise");
-    $cordovaSQLite.execute(db,"CREATE TABLE exercise (EX_NO varchar primary key NOT NULL, EX_NM varchar, REST_SECOND integer,METHOD text,EX_IMAGE_NM varchar, EX_URL varchar, EX_IMG_SYS_NM varchar,EX_EEFAULT_SET varchar,EX_ETC varchar, EX_DESC text, EX_LEVEL integer, EX_DEPTH1 varchar,EX_DEPTH2 varchar, EX_DEPTH3 varchar)");
+
   });
 })
 .constant('CONFIG',{'APP_NAME': 'Expirit','APP_PROGRAM' : '내 운동 프로그램',})
@@ -121,6 +125,16 @@ angular.module('Expirit',
   }).state('header',{
     url: '/asd',
     templateUrl:"templates/header.html",
+  }).state('addExercise',{
+    url: '/addExercise/:day',
+    templateUrl : "templates/addExercise.html",
+    controller : 'addExerciseController'
+    /*views:{
+      'addExercise' : {
+        templateUrl:"templates/addExercise.html",
+        controller: 'addExerciseController'
+      }
+    }*/
   });
 
   // if none of the above states are matched, use this as the fallback
@@ -144,7 +158,10 @@ angular.module('Expirit',
   RestangularProvider.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
       return undefined;
+    }else if(operation==="post"){
+      return undefined;
     }
+    console.log(elem);
     return elem;
   });
 });

@@ -1,24 +1,24 @@
 angular.module('expirit.controllers')
-.controller('programController', function($scope,CONFIG,DropDownList,ProgramService,$ionicActionSheet,UserApi,$cookies,$cookieStore,$timeout) {
+.controller('programController', function($scope,CONFIG,DropDownList,ProgramService,$ionicActionSheet,UserApi,$timeout,$location,$rootScope) {
 
 /*
 테스트용
 */
   $scope.login = function(){
     UserApi.login().then(function(res){
-      $timeout(function(){
-        console.log($cookies.session)
-      });
+      // $timeout(function(){
+      //   console.log($cookies.session)
+      // });
       console.log(res.data[0].email);
       //console.log($cookies.get(JSESSIONID));
       //console.log($cookieStore);
-      console.log($cookieStore.get("Set-Cookie"));
+      //console.log($cookieStore.get("Set-Cookie"));
       //console.log($cookieStore);
       //console.log($cookies);
       //console.log($cookieStore.get('JESSIONID'));
       //console.log($cookies.get('JSESSIONID'));
-      console.log(res);
-      console.log(res.headers("asd"));
+      //console.log(res);
+      //console.log(res.headers("asd"));
       //console.log($cookies.JSESSIONID);
       //console.log();
     });
@@ -38,13 +38,15 @@ angular.module('expirit.controllers')
   $scope.apiGetProgram = function(){
     ProgramService.apiGetProgramList();
   }
-  $scope.appName=CONFIG.APP_PROGRAM;
-  var editButtonHide=false;
 
+  ///////
+  $scope.appName=CONFIG.APP_PROGRAM;
+  var dropDownList = new DropDownList();
+  var editButtonHide=false;
   // 현재 눌린 운동
   var clickedExercise="";
   // 현재 눌린 운동 리스트 -> css 적용하기위해getListByExerciseNo
-  var clickedExerciseItem="";
+  var clickedDay="";
   /*
   *  오늘 요일
   */
@@ -54,14 +56,6 @@ angular.module('expirit.controllers')
     var todayLabel = week[today];
     return todayLabel;
   }
-  /*
-  *  오늘 요일을 기준으로 프로그램 목록 가져오기
-  */
-  function initProgramData(){
-    var ProgramList=ProgramService.getProgramListByDay("MON");
-    DropDownList.setData(ProgramList);
-    $scope.programs=DropDownList.getData();
-  }
 
   /*
   *  Program Page에서 요일을 클릭했을 경우 이벤트
@@ -69,24 +63,24 @@ angular.module('expirit.controllers')
   */
   $scope.getListByDay = function(e){
 
-    var day = e.target.attributes.data.value;
-    var programList=ProgramService.getProgramListByDay(day);
-    $scope.programs=DropDownList.fromProgramList(programList);
+    clickedDay= e.target.attributes.data.value;
+    var programList=ProgramService.getProgramListByDay(clickedDay);
+    $scope.programs=dropDownList.fromProgramList(programList);
   }
 
   /*
   *
   */
-  $scope.$on('$ionTreeList:ItemClicked', function(event, item) {
-    if(item.depth==2){
+  $scope.$on('$ionTreeList:ItemClicked', function(event, exercise) {
+    if(exercise.depth==2){
 
-      clickedExercise=item.name;
-      clickedExerciseItem.clicked="false";
-      item.clicked="true";
-      clickedExerciseItem=item;
-      //console.log(item);
+      //기존꺼 false
+      clickedExercise.clicked="false";
+      //할당
+      clickedExercise=exercise;
+      //true
+      clickedExercise.clicked="true";
 
-      //$scope.asd="click-active";
     }
     else{
       clickedExercise="";
@@ -100,11 +94,16 @@ angular.module('expirit.controllers')
   * call 되는 부분
   * 해당 데이터가 변경되었음을 의미
   */
-  $scope.$on('loadProgramEvent',function(event,programManager){
-    console.log("load!!");
-    var programList=programManager.getListByDay(getTodayLabel());
-    console.log(programList);
-    $scope.programs=DropDownList.fromProgramList(programList);
+  $rootScope.$on('changeProgramManagerEvent',function(event,programManager){
+    //console.log("load!!");
+    if(clickedDay==undefined){
+      var programListByDay=programManager.getListByDay(getTodayLabel());
+    }else{
+      var programListByDay=programManager.getListByDay(clickedDay);
+    }
+    //console.log(programList);
+    console.log("changed!!!"+ programManager);
+    $scope.programs=dropDownList.fromProgramList(programListByDay);
     //console.log(programManager);
   });
 
@@ -126,25 +125,7 @@ angular.module('expirit.controllers')
   *
   */
   $scope.addButtonClick = function(){
-
-    if(clickedExercise){
-      var hideSheet = $ionicActionSheet.show({
-        buttons: [
-          { text: '머신 운동으로 대체' },
-          { text: '맨몸' }
-        ],
-        titleText: clickedExercise,
-        cancelText: '취소',
-        cancel: function() {
-          // add cancel code..
-        },
-        buttonClicked: function(index) {
-          return true;
-        }
-      });
-    }else{
-      alert("choose exericse");
-    }
+    $location.path('/addExercise/'+clickedDay);
   }
 
   /*
@@ -159,7 +140,7 @@ angular.module('expirit.controllers')
           { text: '오늘만 삭제' },
           { text: '향후 모든 삭제' }
         ],
-        titleText: clickedExercise,
+        titleText: clickedExercise.exName,
         cancelText: '취소',
         cancel: function() {
           // add cancel code..
@@ -172,7 +153,7 @@ angular.module('expirit.controllers')
             break;
 
             case 1:
-              var exNo=clickedExerciseItem.no;
+              var exNo=clickedExercise.exNo;
               ProgramService.deleteProgram(exNo);
               console.log("delete", exNo);
             break;
@@ -201,7 +182,7 @@ angular.module('expirit.controllers')
           { text: '맨몸 운동으로 대체' },
           { text: '증상별 맞춤 운동'}
         ],
-        titleText: clickedExercise,
+        titleText: clickedExercise.exName,
         cancelText: '취소',
         cancel: function() {
           // add cancel code..
@@ -218,6 +199,6 @@ angular.module('expirit.controllers')
   }
 
   //////////////////// init settings
-  $scope.programs=DropDownList.getInitData();
+  //$scope.programs=dropDownList.getInitData();
   $scope.myValue = editButtonHide;
 })
