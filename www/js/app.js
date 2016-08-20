@@ -122,7 +122,7 @@ angular.module('Expirit',
         templateUrl: 'templates/main.html'
 
   })
-  .state('main1', {
+  /*.state('main1', {
     url: '/main1',
         templateUrl: 'templates/main1.html'
 
@@ -146,7 +146,7 @@ angular.module('Expirit',
     url: '/intro3-1',
         templateUrl: 'templates/intro3-1.html'
 
-  })
+  })*/
   .state('tab.etc', {
     url: '/etc',
     views: {
@@ -184,10 +184,8 @@ angular.module('Expirit',
   }
 
   RestangularProvider.setFullResponse(true);
-
   $httpProvider.defaults.withCredentials = true;
   RestangularProvider.setErrorInterceptor(ErrorInterceptorProvider.$get().response);
-
   RestangularProvider.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
       return undefined;
