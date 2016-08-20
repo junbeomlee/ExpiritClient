@@ -19,7 +19,7 @@ angular.module('Expirit',
 'ngCordovaOauth',
 'ngCookies',
 'ngCordova',
-'ngRoute'
+'ngRoute',
 'angular-svg-round-progressbar' ,
 'jh.angular-number-picker',
 'chart.js',
@@ -263,9 +263,9 @@ angular.module('Expirit',
   RestangularProvider.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
       return undefined;
-    }else if(operation==="post"){
+    }/*else if(operation==="post"){
       return undefined;
-    }
+    }*/
     console.log(elem);
     return elem;
   });

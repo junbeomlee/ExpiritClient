@@ -14,7 +14,7 @@ function Program(){
     },
     getDay : function(){
       return this.day;
-    }
+    },
   };
   return Program;
 }

@@ -6,21 +6,7 @@ angular.module('expirit.controllers')
 */
   $scope.login = function(){
     UserApi.login().then(function(res){
-      // $timeout(function(){
-      //   console.log($cookies.session)
-      // });
       console.log(res.data[0].email);
-      //console.log($cookies.get(JSESSIONID));
-      //console.log($cookieStore);
-      //console.log($cookieStore.get("Set-Cookie"));
-      //console.log($cookieStore);
-      //console.log($cookies);
-      //console.log($cookieStore.get('JESSIONID'));
-      //console.log($cookies.get('JSESSIONID'));
-      //console.log(res);
-      //console.log(res.headers("asd"));
-      //console.log($cookies.JSESSIONID);
-      //console.log();
     });
   }
 
@@ -46,7 +32,7 @@ angular.module('expirit.controllers')
   // 현재 눌린 운동
   var clickedExercise="";
   // 현재 눌린 운동 리스트 -> css 적용하기위해getListByExerciseNo
-  var clickedDay="";
+  var clickedDay=getTodayLabel();
   /*
   *  오늘 요일
   */
@@ -66,6 +52,8 @@ angular.module('expirit.controllers')
     clickedDay= e.target.attributes.data.value;
     var programList=ProgramService.getProgramListByDay(clickedDay);
     $scope.programs=dropDownList.fromProgramList(programList);
+    clickedExercise.clicked="false";
+    clickedExercise="";
   }
 
   /*
@@ -73,7 +61,7 @@ angular.module('expirit.controllers')
   */
   $scope.$on('$ionTreeList:ItemClicked', function(event, exercise) {
     if(exercise.depth==2){
-
+      console.log(clickedExercise);
       //기존꺼 false
       clickedExercise.clicked="false";
       //할당
@@ -82,11 +70,6 @@ angular.module('expirit.controllers')
       clickedExercise.clicked="true";
 
     }
-    else{
-      clickedExercise="";
-    }
-
-
   });
 
   /*
@@ -199,6 +182,6 @@ angular.module('expirit.controllers')
   }
 
   //////////////////// init settings
-  //$scope.programs=dropDownList.getInitData();
+  $scope.programs=dropDownList.getInitData();
   $scope.myValue = editButtonHide;
 })

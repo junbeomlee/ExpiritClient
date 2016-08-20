@@ -81,7 +81,7 @@ function ProgramService(UserApi,User,Program,Exercise,ProgramManager,HistoryApi,
         ProgramManager.delete(exNo);
 
         // 이벤트 발생
-        $rootScope.$broadcast('loadProgramEvent',ProgramManager);
+        $rootScope.$broadcast('changeProgramManagerEvent',ProgramManager);
       }
     })
 
