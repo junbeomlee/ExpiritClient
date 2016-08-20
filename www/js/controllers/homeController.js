@@ -16,6 +16,9 @@ angular.module('expirit.controllers')
   $scope.programs=dropDownList.fromProgramList(programList);
   
   $scope.apiGetProgram = function(){
+	UserApi.login().then(function(res){
+      console.log(res.data[0].email);
+    });
     ProgramService.apiGetProgramList();
 	programList=ProgramService.getProgramListByDay(today);
   $scope.programs=dropDownList.fromProgramList(programList);
@@ -29,12 +32,18 @@ angular.module('expirit.controllers')
   }
   $scope.$on('$ionTreeList:ItemClicked', function(event, exercise) {
     if(exercise.depth==2){
+		//기존꺼 false
+      clickedExercise.clicked="false";
+      //할당
+      clickedExercise=exercise;
+      //true
+      clickedExercise.clicked="true";
+
 		window.location.href="http://localhost:8100/#/main";
     }
     else{
       clickedExercise="";
     } 
-
 	  console.log(exercise);
   }
 );

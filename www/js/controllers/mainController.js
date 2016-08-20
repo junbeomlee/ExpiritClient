@@ -27,26 +27,29 @@ angular.module('expirit.controllers')
 	$scope.weight = 80;
 })
 .controller("main2Controller",function($scope,MainService){
+	console.log("main2")
 	$scope.myNumber = 10;					
 	$scope.weight=85;
 	$scope.exName=MainService.getEX();
-	$scope.rest=function(){
+
+
 		$scope.elemId="set";
 		$scope.elemId=$scope.elemId.concat(MainService.Get_setNo());
 		console.log($scope.elemId);
 		$scope.x =document.getElementById($scope.elemId);
 		$scope.x.setAttribute("color","red");
-	}
 })
 .controller("main3Controller",function($scope,$timeout,MainService){
+	console.log("main3");
 	$scope.exName=MainService.getEX();
 	$scope.elemId="set";
 	$scope.setNo=MainService.Get_setNo();
 	$scope.elemId=$scope.elemId.concat($scope.setNo);
 	console.log($scope.elemId);
-	$scope.x =document.getElementById($scope.elemId);
-	$scope.x.setAttribute("color","red");
-	$scope.nextSetEvent= function() {	
+	$scope.y =document.getElementById($scope.elemId);
+	$scope.y.setAttribute("color","red");
+	$scope.nextSetEvent= function() {
+		console.log("nextSet");
 		if(MainService.Get_setNo()<5){
 			MainService.Increment_setNo();
 			window.location.href="http://localhost:8100/#/main2";
@@ -117,7 +120,7 @@ angular.module('expirit.controllers')
 		}
 	}
 })
-.controller("ExampleController", function($scope) {
+.controller("main4Controller", function($scope) {
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [
