@@ -1,6 +1,6 @@
- <ion-view>
+ <ion-view ng-controller="mainController">
   <ion-nav-title>
-    {{appName}}
+    {{exName}}
   </ion-nav-title>
   <ion-nav-buttons side="left">
     <div ng-include="header">
@@ -11,7 +11,7 @@
     <section class="">
       <img src="/img/test.gif"style="width: 100%;height: auto;" alt="" />
       <div class="col text-center" style="height:150px;display: flex;justify-content: center; /* align horizontal */align-items: center;">
-        <h3>"데드리프트"를 배운적이 있나요?</h3>
+        <h3>{{exName}}를 배운적이 있나요?</h3>
       </div>
       <hr class="style1">
       <div class="">
