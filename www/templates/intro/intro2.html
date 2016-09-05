@@ -1,0 +1,86 @@
+<ion-view ng-controller="intro2Controller">
+
+<ion-content  class="intro" style="background-color:#01b6ad" >
+<div class="row">
+  <div class="col">
+    <br>
+    <br>
+  
+    <!--슬라이드 내용 부분-->
+      <ion-slide-box on-slide-changed="slideHasChanged($index)">
+
+      <ion-slide>
+        <div class="box blue" align="center">
+        <img src="img/logo/white.png" style="width: 200px; height: auto;"/><br>
+        <h3 style="color:#ffffff"><b>EXPIRIT에 오신것을 환영합니다.</b></br></h3>
+        
+        <p style="color:#ffffff">Expirit은 지금 당장 실천할 수 있는 </br>
+        맞춤형 운동 프로그램을 제공합니다.</p>
+        <br>
+      </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="box yellow" align="center">
+      <img src="img/icons/calendar.png" style="width: 200px; height: auto;"/><br>
+        <h3 style="color:#ffffff"><b>계획적인 운동</b></br></h3>
+        
+        <p style="color:#ffffff">EXPIRIT은 운동 수준, 요일, 신체 테스트를 통해</br>
+        당신에게 꼭 맞는 운동 계획은 짜드립니다.</p>
+      <br>
+      </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="box pink" align="center">
+      <img src="img/icons/graph.png" style="width: 200px; height: auto;"/><br>
+        <h3 style="color:#ffffff"><b>과학적인 운동</b></br></h3>
+        
+        <p style="color:#ffffff">어제 했던 운동을 그대로 하고 있나요?</br>
+        운동 기록 분석을 통해 당신에게 더욱 곡 맞는<br>
+        운동으로 거듭납니다.</p>
+      <br><br>
+      </div>
+      </ion-slide>
+
+       <ion-slide>
+      <div class="box pink" align="center">
+      <img src="img/icons/puzzle.png" style="width: 200px; height: auto;"/><br>
+        <h3 style="color:#ffffff"><b>불편없는 운동</b></br></h3>
+        
+        <p style="color:#ffffff">Expirit은 지금 당장 실천할 수 있는 </br>
+        맞춤형 운동 프로그램을 제공합니다.</p>
+      <br>
+      </div>
+      </ion-slide>
+
+    </ion-slide-box>
+
+  </div>
+</div>
+
+
+
+
+
+    </div>
+</ion-content>
+
+<!-- 바닥에 붙는 풀 버튼 -->
+<div class="login-form" style="position: absolute; bottom: 0px; width: 100%">
+    <div class="row">
+        <div class="col text-center">
+            <button class="button button-block expirit_text icon-left ion-social-facebook" onclick="location.href='#/join'">회원가입</button>
+            <button class="button button-block expirit_bg icon-left ion-social-googleplus" onclick="location.href='#/intro3-1'"
+            style="border-style: solid;border-color: #ffffff" >이미계정이 있으신가요? <b>로그인</b></button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+</ion-view>

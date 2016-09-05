@@ -1,0 +1,50 @@
+<ion-view ng-controller="questController">
+
+  <ion-nav-title>
+    <div class="bar bar-header">
+      <div class="h1 title"></div>
+    </div>
+  </ion-nav-title>
+
+
+  <ion-content>
+    <section>
+      <div align="left" style="position: absolute; left:30px; top:50px">
+        <font class="gray question">
+        당신의 운동 수준을 고르세요.</br></br><br><br><br>
+        </font>
+          <button class="button button-clear expirit_text">
+            <font class="regular" size="4">헬스장을 밟은 적이 없는 <b>운동 초보</b></font>
+          </button>
+          <br><hr class="colored"><br>
+          <button class="button button-clear expirit_text">
+            <font class="regular" size="4">헬스장은 가끔씩 가는 <b>운동 중급자</b></font>            
+          </button>
+          <br><hr class="colored"><br>
+          <button class="button button-clear expirit_text">
+            <font class="regular" size="4">꾸준히 헬스장을 찾아다니는 <b>운동 고수</b></font>
+          </button>
+          <br><hr class="colored"><br>
+          <button class="button button-clear expirit_text">
+            <font class="regular" size="4">운동은 곧 나의 삶! <b>운동 프로</b></font>
+          </button>
+          <br><hr class="colored"><br>
+
+      </div>
+
+
+	</section>
+  </ion-content>
+
+
+<!--하단에 붙이는 버튼-->
+<div class="" style="position: absolute; bottom: 20px; right:15px; width: 100%">
+  <div class="row">
+      <button class="button button-float" ng-click="next()">
+        <i class="ion-arrow-right-b"></i>
+      </button>
+
+  </div>
+</div>
+
+</ion-view>

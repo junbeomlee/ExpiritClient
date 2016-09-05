@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
-/*:root{
-  var-imgPath : "/img/";
+:root{
+  var-imgPath : "img/";
 }
 
 #bigCircle{
@@ -20,4 +20,357 @@
 }
 .intro {
     background-image: url("img/deadLift.png");
-}*/
+}
+
+/*앱 전체적인 구성*/
+/*익스피릿 텍스트 설정*/
+ .expirit_text{
+    color : #00b5ac !important;
+    background-color:#ffffff !important;
+ }
+ /*익스피릿 백그라운드 폰트*/
+ .expirit_bg{
+    color : #ffffff !important;
+    background-color:#00b5ac !important;
+ }
+ /*네비바의 경계선을 없앰*/
+ .bar-balanced{
+    border-style: none;
+ }
+
+/*백그라운드 없는 입력페이지*/
+ .item_nobg{
+    background-color: #00b5ac !important;
+ }
+
+
+/*플레이스 홀더 색깔 바꿈*/
+*::-webkit-input-placeholder {
+  color: #58dad1 !important;
+}
+*:-moz-placeholder {
+  color: #58dad1 !important;
+}
+*:-ms-input-placeholder { /* IE10+ */
+  color: #58dad1 !important;
+}
+
+
+/*회원가입시 아래 흰선*/
+input.bordered_input {
+    width: 200px;
+    background: transparent;
+    border-bottom-width: 0.5px;
+    border-bottom-style: solid;
+    border-bottom-color: #58dad1; 
+    width: 20px;
+}
+
+
+
+/*회원가입시 아이콘과의 간격 유지*/
+.join_icon  {
+            width: 100%;
+            bottom: 0px;
+            margin-right: 6px;
+            margin-left: 10px;
+            }
+			
+/* round button*/
+.button-float {
+  background: #00b5ac !important;
+  color: white !important;
+  z-index: 12 !important;
+  position: absolute !important;
+  bottom: 10px !important;
+  right: 10px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transition: 0.2s linear !important;
+  transition: 0.2s linear !important;
+  -webkit-transition-property: -webkit-transform, all !important;
+  transition-property: transform, all !important;
+}
+
+.button-float:hover {
+  -webkit-transform: translate3d(0, -1px, 0) !important;
+  transform: translate3d(0, -1px, 0) !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4) !important;
+  background: #00b5ac !important;
+}
+
+
+
+
+hr.colored {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(1, 182, 173, 1);
+  border-bottom: 1px solid rgba(1, 182, 173, 1);
+}
+
+
+/*font설정*/
+/*나눔고딕 폰트 적용*/
+@font-face { 
+  font-family: 'NanumGothic';
+  src: url("../fonts/NanumGothic.ttf");
+}
+
+@font-face {
+  font-family: 'NanumGothicBold';
+  src: url("../fonts/NanumGothicBold.ttf");
+}
+
+font {
+  font-family: "NanumGothicBold";
+}
+
+font.regular {
+  font-family: "NanumGothic";
+}
+
+/*폰트 사이즈*/
+font.question{
+  font-size:1.4em !important;
+}
+
+font.small{
+  font-size: 1em !important;
+}
+
+/*font color 설정*/
+
+
+/*본문용 그레이색*/
+font.gray {
+  font-family: "NanumGothicBold";
+  color: #4e4e4e;
+}
+
+/*슬라이드 버튼 흰색으로 만듬*/
+.ion-record{
+  color:#ffffff;
+}
+
+.numberPickerBoxText{
+  height: 90px !important;
+  color: #ffffff !important;
+  background-color: #00b5ac;
+}
+
+
+
+/*증감화살표 디자인*/
+.arrow-up {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 15px 22px 15px;
+  border-color: transparent transparent #a8a9ad transparent;
+  margin:0 auto;
+}
+
+.arrow-down {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 22px 15px 0 15px;
+  border-color: #a8a9ad transparent transparent transparent;
+  margin:0 auto;
+}
+
+
+
+/*가운데 정렬 CSS*/
+.outer {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.centered {
+  position: relative;
+  display: inline-block;
+ 
+  width: 40%;
+  padding: 1em;
+  background: #00b5ac;
+  color: white;
+  border-radius: 20px;
+}
+
+
+
+
+
+/*그림으로 선택하게 하기*/
+/*남자그림*/
+input[type=checkbox].imgcheck_male {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_male + label {
+    background-image: url("../img/icons/male.png");
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_male:checked + label {
+    background-image: url("../img/icons/male_checked.png");
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+/*여자그림*/
+input[type=checkbox].imgcheck_female {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_female + label {
+    background-image: url("../img/icons/female.png");
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_female:checked + label {
+    background-image: url("../img/icons/female_checked.png");
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+
+/*lose*/
+input[type=checkbox].imgcheck_lose {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_lose + label {
+    background-image: url("../img/icons/lose.png");
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_lose:checked + label {
+    background-image: url("../img/icons/lose_checked.png");
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+/*keep*/
+input[type=checkbox].imgcheck_keep {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_keep + label {
+    background-image: url("../img/icons/keep.png");
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_keep:checked + label {
+    background-image: url("../img/icons/keep_checked.png");
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+/*gain*/
+input[type=checkbox].imgcheck_gain {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_gain + label {
+    background-image: url("../img/icons/gain.png");
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_gain:checked + label {
+    background-image: url("../img/icons/gain_checked.png");
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+/*freeweight 사진*/
+input[type=checkbox].imgcheck_freeweight {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_freeweight + label {
+    background-image: url("../img/icons/freeweight.png");
+    height: 150px;
+    width: 150px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_freeweight:checked + label {
+    background-image: url("../img/icons/freeweight_checked.png");
+    height: 150px;
+    width: 150px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+/*machine 사진*/
+input[type=checkbox].imgcheck_machine {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_machine + label {
+    background-image: url("../img/icons/machine.png");
+    height: 150px;
+    width: 150px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_machine:checked + label {
+    background-image: url("../img/icons/machine_checked.png");
+    height: 150px;
+    width: 150px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+/*day 사진*/
+input[type=checkbox].imgcheck_day {
+    display:none;
+}
+
+input[type=checkbox].imgcheck_day + label {
+    background-image: url("../img/icons/machine.png");
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox].imgcheck_day:checked + label {
+    background-image: url("../img/icons/machine_checked.png");
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}

@@ -1,0 +1,32 @@
+ <ion-view>
+  <ion-nav-title>
+    {{appName}}
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <div ng-include="header">
+
+    </div>
+  </ion-nav-buttons>
+  <ion-content style="background-color:#EBEBED">
+    <section class="">
+      <img src="/img/deadLift.png"style="width: 100%;height: auto;" alt="" />
+      <div class="col text-center" style="height:150px;display: flex;justify-content: center; /* align horizontal */align-items: center;">
+        <h3>"데드리프트"를 배운적이 있나요?</h3>
+      </div>
+      <hr class="style1">
+      <div class="">
+        <div class="row">
+          <div class="col text-center">
+            <a class="button button-expirit-color button-execercise" href="#/tab/main1">네 배웠습니다.</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+			<a class="button button-expirit-color button-execercise" href="#">아니요 처음입니다.</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </ion-content>
+</ion-view>

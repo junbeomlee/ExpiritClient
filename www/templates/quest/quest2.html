@@ -1,0 +1,45 @@
+<ion-view ng-controller="datepickerController" >
+  <ion-nav-title>
+    <div class="bar bar-header">
+      <div class="h1 title">질의응답(2/8)</div>
+    </div>
+  </ion-nav-title>
+
+  <ion-content>
+    <section>
+      <div class="row" style="position: absolute; left:30px; top:50px">
+        <font class="gray question">
+          당신의 생일을 입력하세요.
+        </font>
+      </div>
+	
+        <br><br><br><br><br>
+
+        <label class="item item-input">
+          <span class="input-label">
+           <button class="button button-block button-positive" ng-click="openDatePicker()">{{ currentDate | date:'MMMM/dd/yyyy' }}</button> 
+
+          </span>
+        </label>
+		<input type="date">
+        <label class="item item-input">
+  <span class="input-label">Month</span>
+  <input type="month">
+</label>
+    </section>
+
+  </ion-content>
+
+
+
+<!--하단에 붙이는 버튼-->
+<div class="" style="position: absolute; bottom: 20px; right:15px; width: 100%">
+  <div class="row">
+      <button class="button button-float" ng-click="next()">
+        <i class="ion-arrow-right-b"></i>
+      </button>
+
+  </div>
+</div>
+
+</ion-view>

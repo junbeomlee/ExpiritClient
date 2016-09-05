@@ -1,0 +1,48 @@
+<ion-view ng-controller="questController">
+  <ion-nav-title>
+    <div class="bar bar-header">
+      <div class="h1 title">집의응답(5/8)</div>
+    </div>
+  </ion-nav-title>
+
+  <ion-content>
+    <section>
+      <div class="row" align="left" style="position: absolute; left:30px; top:50px">
+        <font class="gray question">
+        선호하는 운동 종류를 고르세요</br></br>
+        <br><br><br>
+        </font>
+      </div>
+      
+      <br><br><br><br><br><br><br><br><br><br>
+        <table cellpadding="0" cellspacing="0" border="0" style="width:60%; margin:auto;">
+          <tr>
+            <td valign="top" ng-click="freeweight_checked()">
+              <input type='checkbox' name='thing' value='valuable' id="freeweight" class="imgcheck_freeweight"/>
+              <label for="freeweight"></label>
+            </td>
+
+            <td valign="top" ng-click="machine_checked()">
+              <input type='checkbox' name='thing' value='valuable' id="machine" class="imgcheck_machine"/>
+              <label for="machine"></label>
+            </td>
+          </tr>
+        </table>
+
+
+
+    </section>
+
+  </ion-content>
+
+<!--하단에 붙이는 버튼-->
+<div class="" style="position: absolute; bottom: 20px; right:15px; width: 100%">
+  <div class="row">
+      <button class="button button-float" ng-click="next7()">
+        <i class="ion-arrow-right-b"></i>
+      </button>
+
+  </div>
+</div>
+
+</ion-view>

@@ -1,0 +1,56 @@
+<ion-view ng-controller="main1Controller">
+  <ion-nav-title>
+    <b>{{exName}}</b>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <div ng-include="header">
+
+    </div>
+  </ion-nav-buttons>
+  <ion-content style="background-color:#EBEBED" >
+    <div align="center" class="contents">
+      <section class="" style="background-color:#ffffff;padding:15px;padding-top:80px;padding-bottom:80px;margin-bottom:10px">
+        <h3><b>"데드리프트"가 처음이시군요!</b></h3>
+        <br>
+        <p>
+        송주안님의 체중 {{myweight}}kg인 다른사람들은
+        <br>
+        평균 {{weight}}kg로 8~12회 반복 운동을 하고 있어요!
+        </p>
+      </section>
+
+    <!--운동 횟수 입력 섹션-->
+	  <section class="core-section" style="margin-bottom:10px;padding:15px">
+    <div align="center">
+      <font size="4pt"><b>몇 kg으로 운동 하시겠습니까?</b></font>
+    </div>
+    <div align="center">   
+      <br>
+      <jh-number-picker number="weight"></jh-number-picker>
+    </div>
+    </section>	
+	
+     <section class="core-section" style="margin-bottom:10px;padding:15px">
+
+
+      </section>	
+
+
+    </div>
+  </ion-content>
+
+
+
+
+
+<!-- align to the bottom of the page -->
+<div class="login-form" style="position: absolute; bottom: 0px; width: 100%">
+
+    <div class="row">
+        <div class="col text-center">
+            <a class="button button-block expirit_bg" href="#/main2">시작하기</a>
+        </div>
+    </div>
+
+</div>
+</ion-view>

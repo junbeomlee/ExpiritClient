@@ -1,0 +1,40 @@
+<!-- <ion-view view-title="Account">
+
+  <ion-nav-title>
+    <div class="bar bar-header">
+      <div class="h1 title">내 운동 내역</div>
+    </div>
+  </ion-nav-title>
+
+  <ion-content>
+    <section>
+      <div class="list">
+        <ion-tree-list items="programs" collapsed="true"></ion-tree-list>
+      </div>
+    </section>
+  </ion-content>
+</ion-view>
+ -->
+ 
+ <ion-view view-title="운동내역">
+  <ion-nav-title>
+    {{appName}}
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <div ng-include="header">
+    </div>
+  </ion-nav-buttons>
+  <ion-content style="background-color:#EBEBED">
+    <div class="contents">
+      <section class="core-section">
+        <div class="item item-divider">
+             <button class="button" name="button" ng-click="apiGetProgram()">오늘의 운동</button>
+          </div>
+		<div class="list">
+                  <ion-tree-list items="programs" collapsed="true"></ion-tree-list>
+        </div>
+      </section>
+    </div>
+  </ion-content>
+</ion-view>
+ 

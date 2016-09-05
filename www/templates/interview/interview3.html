@@ -1,0 +1,34 @@
+<ion-view >
+  <ion-nav-title>
+<div class="bar bar-header">
+      <button class="button button-icon icon ion-arrow-left-c" name="button" ng-click=""></button>
+      <!--<button class="button button-icon" ng-click="showEditButton()">Edit</button>-->
+      <div class="h1 title"></div>
+    </div>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <div ng-include="header">
+
+    </div>
+  </ion-nav-buttons>
+  <ion-content  class="intro" style="background-color:#ffffff" >
+    <div class="row" align="left" style="position: absolute; left:30px; top:50px">
+      <font class="gray question regular">
+        다음 동작이 가능한가요?<br><br>
+          <br><br><br>
+      </font>
+    </div>
+  </ion-content>
+
+
+
+<!-- 바닥에 붙는 풀 버튼 -->
+<div class="login-form" style="position: absolute; bottom: 0px; width: 100%">
+    <div class="row">
+        <div class="col text-center">
+            <button class="button button-block expirit_bg" onclick="location.href='#/interview4'">네</button>
+            <button class="button button-block expirit_bg" onclick="location.href='#/interview3-1'">아니오</button>
+        </div>
+    </div>
+</div>
+</ion-view>

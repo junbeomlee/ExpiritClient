@@ -1,0 +1,52 @@
+<ion-view ng-controller="joinController">
+
+  <ion-nav-title>
+    <div class="bar bar-header">
+      <div class="h1 title">이메일 가입하기</div>
+    </div>
+  </ion-nav-title>
+
+
+  <ion-content  class="intro" style="background-color:#01b6ad" >
+    <div class="contents">
+	<section class="">
+     <section class="core-section" style="margin-bottom:10px;padding:15px">
+		 <div class="">
+
+        <div>
+          <br><br>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <form  method="get"><!--action="http://validator.w3.org/check"-->
+
+              <label class="item_nobg item-input" >
+            	<img class="join_icon" src="img/icons/person.png"style="width: 20px;height: auto; ">
+                <input class="bordered_input" type="text" placeholder="이름" id="name">
+              </label>
+
+              <label class="item_nobg item-input" >
+            	  <img class="join_icon" src="img/icons/mail.png"style="width: 20px;height: auto; "> 
+                <input class="bordered_input" type="text" placeholder="이메일" id="email">
+              </label>
+
+              <label class="item_nobg item-input">
+                <img class="join_icon" src="img/icons/lock.png"style="width: 20px;height: auto; ">
+                <input class="bordered_input" type="text" placeholder="비밀번호" id="passwd">
+              </label>
+
+              <label class="item_nobg item-input" >
+            	<img class="join_icon" src="img/icons/lock.png"style="width: 20px;height: auto; ">
+                <input class="bordered_input" type="text" placeholder="비밀번호 확인하기" id="passwd2">
+              </label>
+                          <button class="button  button-block expirit_text" ng-click="join()"><b>가입하기</b></button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+      </section>	
+	
+    </div>
+  </ion-content>
+</ion-view>

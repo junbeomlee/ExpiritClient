@@ -1,5 +1,4 @@
 <ion-view view-title="Account">
-
   <ion-nav-title>
     <div class="bar bar-header">
       <button class="button" name="button" ng-click="login()">login</button>
@@ -8,7 +7,6 @@
       <button class="button" name="button" ng-click="apiGetProgram()">loadData</button>
       <button class="button" name="button" ng-click="logout()">logout</button>
       <button class="button" name="button" ng-click="test()">test</button>
-      <button class="button" name="button" ng-click="loadDB()">loadDB</button>
     </div>
   </ion-nav-title>
 
@@ -17,6 +15,7 @@
     <ion-floating-item icon="ion-ios-trash-outline" click="deleteButtonClick()"></ion-floating-item>
     <ion-floating-item icon="ion-loop" click="changeButtonClick()"></ion-floating-item>
   </ion-floating-menu>
+  
   <ion-content>
     <div class="button-bar">
       <a data="MON" ng-click="getListByDay($event)" class="button">월</a>
@@ -29,7 +28,7 @@
     </div>
     <section>
       <div class="list">
-        <ion-tree-list items="DropDownlistData" collapsed="true"></ion-tree-list>
+        <ion-tree-list items="programs" collapsed="true"></ion-tree-list>
       </div>
     </section>
 

@@ -30,8 +30,8 @@ function (Restangular,$cookieStore) {
       params.day=program.getDay();
       return userProgram.post('',params);
     },
-    login: function(){
-      return Restangular.one("").customGET("login",{'email':'frontalnh@naver.com','password':61351});
+	login: function(email,passwd){
+return Restangular.one("").customGET("login",{'email':email,'password':passwd});
     },
     logout: function(){
       return Restangular.one("").customGET("logout");

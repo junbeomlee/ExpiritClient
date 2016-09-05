@@ -1,0 +1,70 @@
+<ion-view ng-controller="numberpickerController" >
+  <ion-nav-title>
+    <div class="bar bar-header">
+      <div class="h1 title">질의응답(4/8)</div>
+    </div>
+  </ion-nav-title>
+
+
+  <ion-content >
+    <section>
+      <div class="row" align="left" style="position: absolute; left:30px; top:50px">
+        <font class="gray question">
+        당신의 몸무게는 얼마인가요?</br></br>
+        <br><br><br>
+        </font>
+      </div>
+
+      <br><br><br><br><br><br><br><br><br><br>
+
+
+
+        <div style="text-align:center;">
+          <div  class="arrow-up" ng-click="up()" />
+        </div>  
+
+        <br>
+        <div class="container">
+          <div class="outer">
+            <div class="inner">
+              <div class="centered">
+                <font size="20">
+                  {{number}}
+                </font>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div style="text-align:center;">
+          <div  class="arrow-down" ng-click="down()" style="display:bolck;"/>
+        </div>  
+
+        
+        
+
+    
+
+    </section>
+
+
+
+
+  </ion-content>
+
+
+
+<!--하단에 붙이는 버튼-->
+<div class="" style="position: absolute; bottom: 20px; right:15px; width: 100%">
+  <div class="row">
+      <button class="button button-float" ng-click="next()">
+        <i class="ion-arrow-right-b"></i>
+      </button>
+
+  </div>
+</div>
+
+
+</ion-view>

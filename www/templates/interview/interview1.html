@@ -1,0 +1,49 @@
+<ion-view >
+  <ion-nav-title>
+<div class="bar bar-header">
+      <button class="button button-icon icon ion-arrow-left-c" name="button" ng-click=""></button>
+      <!--<button class="button button-icon" ng-click="showEditButton()">Edit</button>-->
+      <div class="h1 title"></div>
+    </div>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <div ng-include="header">
+
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content  class="intro" style="background-color:#01b6ad" >
+    <div class="contents">
+	<section class="">
+     <section class="core-section" style="margin-bottom:10px;padding:15px">
+      <div class="row" align="left" style="position: absolute; left:30px; top:50px">
+        <font class="expirit_bg question regular">
+          당신의 몸이 건강한지 알아보겠습니다.<br><br>
+          언제든지 '내 운동 상태'에서 체크가<br><br>
+          가능하니 자신 있으시면 넘어가셔도 됩니다.
+            <br><br><br>
+        </font>
+      </div>
+      </section>	
+	
+    </div>
+  </ion-content>
+
+<!-- 바닥에 붙는 풀 버튼 -->
+<div class="login-form" style="position: absolute; bottom: 0px; width: 100%">
+    <div class="row">
+        <div class="col text-center">
+            <button class="button button-block expirit_text" onclick="location.href='#/interview2'">
+              <font>
+                시작하기
+              </font>
+            </button>
+            <button class="button button-block button-outline button-light expirit_bg" onclick="location.href='#/intro3-1'">
+              <font>
+                자신있어요. 그냥 시작할래요
+              </font>
+            </button>
+        </div>
+    </div>
+</div>
+</ion-view>

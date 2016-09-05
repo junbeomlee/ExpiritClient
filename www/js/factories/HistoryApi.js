@@ -10,8 +10,5 @@ function (Restangular) {
          */
         return histories.customGET("search",{'userEmail':'frontalnh@naver.com','exNo':exNo});
       },
-      getAll : function(){
-        return histories.getList();
-      }
     }
 });
