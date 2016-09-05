@@ -14,19 +14,19 @@
   background-size:contain;
 }
 
-.tabs .tab-item .icon.myexercise-on {
+.tabs .tab-item .icon.history-on {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 100%;
-  background-image: url('../../../img/icons/icon-myexercise-on.png');
+  background-image: url('../../../img/icons/icon-history-on.png');
   background-size:contain;
 }
 
-.tabs .tab-item .icon.myexercise-off {
+.tabs .tab-item .icon.history-off {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 100%;
-  background-image: url('../../../img/icons/icon-myexercise-off.png');
+  background-image: url('../../../img/icons/icon-history-off.png');
   background-size:contain;
 }
 

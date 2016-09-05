@@ -1,9 +1,35 @@
 angular.module('expirit.controllers')
-.controller('programController', function($scope,CONFIG,DropDownList,ProgramService,$ionicActionSheet,UserApi,$timeout,$location,$rootScope) {
+.controller('programController', function($scope,CONFIG,DBConnector,ExerciseDao,ExerciseApi,DropDownList,ProgramService,$ionicActionSheet,UserApi,$timeout,$location,$rootScope) {
 
 /*
 테스트용
 */
+  $scope.loadDB = function(){
+
+    ExerciseApi.getList().then(function(response){
+
+      DBConnector.query("DELETE * FROM exercise");
+
+      if(response.status==200){
+        //console.log(response.data.plain()[0]);
+        var ExerciseArray = response.data.plain()[0];
+        var exerciseArrayDB=[];
+        for(var i=0;i<ExerciseArray.length;i++){
+          var exercise = ExerciseArray[i];
+          var exerciseDB=[];
+          Object.keys(exercise).forEach(function(key) {
+            exerciseDB.push(exercise[key]);
+          });
+          exerciseArrayDB.push(exerciseDB);
+        }
+        for(var i=0;i<ExerciseArray.length;i++){
+          var exercisePropertyArray=exerciseArrayDB[i];
+          ExerciseDao.add(exercisePropertyArray);
+          //DBConnector.query("INSERT INTO exercise (EX_NO,EX_NM,REST_SECOND,METHOD,EX_IMAGE_NM,EX_URL,EX_IMG_SYS_NM,EX_DEFAULT_SET,EX_IMG_PATH,EX_ETC, EX_DESC,EX_LEVEL,EX_DEPTH1,EX_DEPTH2,EX_DEPTH3) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",parameters);
+        }
+      }
+    });
+  }
   $scope.login = function(){
     UserApi.login().then(function(res){
       console.log(res.data[0].email);
@@ -48,10 +74,10 @@ angular.module('expirit.controllers')
   *  해당요일에 해당하는 운동리스트를 표시
   */
   $scope.getListByDay = function(e){
-
+    console.log("")
     clickedDay= e.target.attributes.data.value;
     var programList=ProgramService.getProgramListByDay(clickedDay);
-    $scope.programs=dropDownList.fromProgramList(programList);
+    $scope.DropDownlistData=dropDownList.fromProgramList(programList);
     clickedExercise.clicked="false";
     clickedExercise="";
   }
@@ -86,7 +112,7 @@ angular.module('expirit.controllers')
     }
     //console.log(programList);
     console.log("changed!!!"+ programManager);
-    $scope.programs=dropDownList.fromProgramList(programListByDay);
+    $scope.DropDownlistData=dropDownList.fromProgramList(programListByDay);
     //console.log(programManager);
   });
 
@@ -182,6 +208,6 @@ angular.module('expirit.controllers')
   }
 
   //////////////////// init settings
-  $scope.programs=dropDownList.getInitData();
+  $scope.DropDownlistData=dropDownList.getInitData();
   $scope.myValue = editButtonHide;
 })
